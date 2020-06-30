@@ -54,8 +54,8 @@ const getLast = () => {
 
 const getComic = (number) => {
   event.preventDefault();
-  if (!number) { url = `http://xkcd.com/info.0.json` }
-  else { url = `http://xkcd.com/${number}/info.0.json`; }
+  if (!number) { url = `https://xkcd.com/info.0.json` }
+  else { url = `https://xkcd.com/${number}/info.0.json`; }
   console.log(url);
   fetch(url)
   .then ( response => response.json() )
