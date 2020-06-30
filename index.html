@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>xkcd viewer</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/40fd1bd135.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body onload="getOnLoad()">
+  <header>
+    <a target="blank" href="https://xkcd.com/"><h2 class="title">XKCD</h2></a>
+    <p>A webcomic of romance, sarcasm, math, and language.</p>
+    <hr>
+    <nav>
+      <ul>
+        <a href=""><li id="first">First</li></a>
+        <a href=""><li id="prev">Prev</li></a>
+        <a href=""><li id="random">Random</li></a>
+        <a href=""><li id="next">Next</li></a>
+        <a href=""><li id="last">Last</li></a>
+      </ul>
+    </nav>
+    <hr>
+  </header>
+
+  <main>
+    <div id="content">
+      <br><div id="title"></div>
+      <div id="subtitle"></div>
+      <br><img id="comic" src=""></div>
+    </div>
+  </main>
+
+    <footer>
+      <br><hr>
+      <p>Developed by thigoap. | 
+        <a target="blank" href="https://github.com/thigoap"><i class="fab fa-github"></i></a>
+      </p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+</html>
