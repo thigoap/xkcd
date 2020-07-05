@@ -1,3 +1,7 @@
+let comic = '';
+let currComic = '';
+let lastComic = '';
+
 let first = document.getElementById('first');
 let prev = document.getElementById('prev');
 let random = document.getElementById('random');
@@ -5,71 +9,68 @@ let next = document.getElementById('next');
 let last = document.getElementById('last');
 
 let title = document.getElementById('title');
-let subtitle = document.getElementById('subtitle');
-let comic = document.getElementById('comic');
+let image = document.getElementById('comic');
 
-let lastComic;
-let comicNumber;
+const getComic = async () => fetch(`https://xkcd.thigoap.vercel.app/api/${comic}`)
+.then(res => res.json())
 
-const getOnLoad = () => {
-  event.preventDefault();
-  getComic(comicNumber);
+const showComic = async () => {
+  let comicJson = await getComic();
+  title.innerHTML = `${comicJson.num} - ${comicJson.title}`;
+  subtitle.innerHTML = `<a target="blank" 
+  href="https://xkcd.com/${comicJson.num}/">(see the original at XKCD)</a>`;
+  image.style.maxWidth = '100%';
+  image.style.height = 'auto';
+  image.src = comicJson.img;
+  currComic = comicJson.num;
+  if (comic === 'last') { lastComic = comicJson.num } // only on load, to define last comic
 }
 
 const getFirst = () => {
-  comicNumber = 1;
-  getComic(comicNumber);
+  event.preventDefault();
+  if (currComic === 1) { return; }
+  else {
+    comic = 1;
+    showComic();
+  }
 }
 
 const getPrev = () => {
   event.preventDefault();
-  if (comicNumber <= 1) { return; } 
+  if (currComic <= 1) { return; }
   else {
-    comicNumber--;
+    comic = currComic - 1;
+    showComic();
   }
-  getComic(comicNumber);
-}
-
-const getNext = () => {
-  event.preventDefault();
-  if (comicNumber >= lastComic) { return; } 
-  else {
-    comicNumber++;
-  }
-  getComic(comicNumber);
 }
 
 const getRandom = () => {
   event.preventDefault();
-    let random = Math.floor(Math.random() * lastComic);
-    comicNumber = random;
-  getComic(comicNumber);
+  comic = Math.floor(Math.random() * lastComic);
+  showComic();
+}
+
+const getNext = () => {
+  event.preventDefault();
+  if (currComic >= lastComic) { return; }
+  else {
+    comic = currComic + 1;
+    showComic();
+  }
 }
 
 const getLast = () => {
   event.preventDefault();
-  comicNumber = lastComic;
-  getComic(comicNumber);
+  if (currComic === lastComic) { return; }
+  else {
+    comic = lastComic;
+    showComic();
+  }
 }
 
-const getComic = (number) => {
-  event.preventDefault();
-  if (!number) { url = `https://xkcd.com/info.0.json` }
-  else { url = `https://xkcd.com/${number}/info.0.json`; }
-  console.log(url);
-  fetch(url)
-  .then ( response => response.json() )
-  .then (result => {
-    if (!number) { lastComic = result.num; } // only on load, to define last comic
-    comicNumber = result.num;
-    title.innerHTML = `${comicNumber} - ${result.title}`;
-    subtitle.innerHTML = `<a target="blank" 
-    href="https://xkcd.com/${comicNumber}/">(see the original at XKCD)</a>`;
-    comic.style.maxWidth = '100%';
-    comic.style.height = 'auto';
-    comic.src = result.img; 
-    console.log('result', result);
-  });  
+const getOnLoad = () => {
+  comic = 'last';
+  showComic();  
 }
 
 first.addEventListener('click', getFirst);

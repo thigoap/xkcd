@@ -19,4 +19,4 @@ At the moment, it has the same funcionalities of the original page:
 
 ## Check live
 
-
+[XKCD comic viewer](https://xkcd.thigoap.vercel.app/)

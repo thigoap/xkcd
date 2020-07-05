@@ -1,0 +1,24 @@
+{
+  "name": "xkcd",
+  "version": "1.0.0",
+  "description": "A simple webpage that loads the json response of [XKCD](https://xkcd.com/) comics.\r > A webcomic of romance, sarcasm, math, and language.",
+  "main": "script.js",
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thigoap/xkcd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thigoap/xkcd/issues"
+  },
+  "homepage": "https://github.com/thigoap/xkcd#readme"
+}
