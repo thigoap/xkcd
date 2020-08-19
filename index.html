@@ -3,43 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple webpage that loads the json response of XKCD comics.">
   <title>xkcd viewer</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/40fd1bd135.js" crossorigin="anonymous"></script>
-    <!-- CSS -->
-    <link rel="stylesheet" href="index.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="index.css">
 </head>
 <body onload="getOnLoad()">
   <header>
-    <a target="blank" href="https://xkcd.com/"><h2 class="title">XKCD</h2></a>
+    <a rel="noopener noreferrer" target="_blank" href="https://xkcd.com/"><h2 class="title">XKCD</h2></a>
     <p>A webcomic of romance, sarcasm, math, and language.</p>
     <hr>
     <nav>
-      <ul>
-        <a href=""><li id="first">First</li></a>
-        <a href=""><li id="prev">Prev</li></a>
-        <a href=""><li id="random">Random</li></a>
-        <a href=""><li id="next">Next</li></a>
-        <a href=""><li id="last">Last</li></a>
-      </ul>
+      <button id="first" class="button">First</button>
+      <button id="prev" class="button">Prev</button>
+      <button id="random" class="button">Random</button>
+      <button id="next" class="button">Next</button>
+      <button id="last"class="button">Last</button>
     </nav>
     <hr>
   </header>
 
   <main>
+    <div id="search-container">
+      <label for="searchInput">Search for specific comic: from 1 to <span id="lastComic"></span></label><br>
+      <input type="number" id="searchInput" name="searchInput" min="1">
+      <button class="button search" id="searchBtn">Search</button>
+    </div>
     <div id="content">
       <br><div id="title"></div>
       <div id="subtitle"></div>
-      <br><img id="comic" src=""></div>
+      <br><img id="comic" src="" alt="comic"></div>
     </div>
   </main>
 
     <footer>
       <br><hr>
-      <p>Developed by thigoap. | 
-        <a target="blank" href="https://github.com/thigoap"><i class="fab fa-github"></i></a>
+      <p class="footer-text">Developed by thigoap. |
+        <a class="git-link" rel="noopener noreferrer" target="_blank" aria-label="link to github" href="https://github.com/thigoap">
+          <img class="git-icon" src="gitHub-mark-32px.png" alt="github icon">
+        </a>
       </p>
     </footer>
     <script src="index.js"></script>
