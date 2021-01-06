@@ -4,7 +4,7 @@
   "description": "A simple webpage that loads the json response of [XKCD](https://xkcd.com/) comics.\r > A webcomic of romance, sarcasm, math, and language.",
   "main": "script.js",
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.21.1"
   },
   "scripts": {
   },
